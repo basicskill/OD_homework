@@ -9,20 +9,21 @@ architecture Test of traffic_light_tb is
     component traffic_light is
         port (
             clk, reset          : in std_logic;
-            rc, yc, gc, rp, gp  : out std_logic
-            -- cd_time             : out integer;
+            rc, yc, gc, rp, gp  : out std_logic;
+            cd_time             : out integer
         );
     end component;
 
-    constant C_CLK_PERIOD: time := 2 ns; -- PROVERI
+    constant C_CLK_PERIOD: time := 125 ms;
 
     signal clk : std_logic := '1';
     signal reset : std_logic;
     signal rc, yc, gc, rp, gp : std_logic;
+    signal cd_time : integer;
 
 begin
 
-    LIGHT_i : traffic_light port map (clk, reset, rc, yc, gc, rp, gp);
+    LIGHT_i : traffic_light port map (clk, reset, rc, yc, gc, rp, gp, cd_time);
 
     clk <= not clk after C_CLK_PERIOD/2;
 
