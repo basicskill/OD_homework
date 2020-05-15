@@ -56,7 +56,7 @@ begin
         variable    v_romvector    : std_logic_vector(11 downto 0);
     begin
         if reset = '0' then
-            file_open(data_file, "C:/romFile.txt",  write_mode);
+            file_open(data_file, "romFile.txt",  write_mode);
             
             while true loop
                 for i in 1 to 8 loop
